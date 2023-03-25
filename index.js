@@ -45,12 +45,13 @@ server.put('/animais/:index', (req, res) => {
 
 });
 
-
+/*  Deletar um animal
 server.delete('/animais/:index', (req, res) => {
     const { index } = req.params;
     
     const.splice(index, 1);
     return res.json({ message: "O animal foi deletado"});
 });
+*/
 
 server.listen(3000);
