@@ -4,7 +4,7 @@ const server = express();
 server.use(express.json());
 
 //Tipos de animais
-const animais_tipo = ['Gato', 'Cachorro', 'Roedor', 'Aves'];
+const animais_tipo = ['Gato', 'Cachorro', 'Roedor', 'Aves', 'Outros'];
 
 //Retornar um tipo de animal
 server.get('/animais_tipo/:index', (req, res) => {
@@ -25,6 +25,12 @@ server.get('/animais', (req, res) => {
     return res.json(animais);
 });
 
+//Retornar um animal específico
+server.get('/animais/:index', (req, res) => {
+    const { index } = req.params;
+    return res.json(animais[index]);
+});
+
 
 //Criar um novo animal
 server.post('/animais', (req, res) => {
@@ -39,19 +45,18 @@ server.put('/animais/:index', (req, res) => {
     const { index } = req.params;
     const { name } = req.body;
 
-    cursos[index] = name;
+    animais[index] = name;
 
     return res.json(animais);
 
 });
 
-/*  Deletar um animal
+//deletar um animal
 server.delete('/animais/:index', (req, res) => {
     const { index } = req.params;
     
-    const.splice(index, 1);
+    animais.splice(index, 1);
     return res.json({ message: "O animal foi deletado"});
 });
-*/
 
 server.listen(3000);
